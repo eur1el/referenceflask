@@ -8,10 +8,15 @@ views = Blueprint("views", __name__)
 
 @views.route("/")
 @views.route("/home")
-@login_required
 def home():
     posts = Post.query.all()
     return render_template("home.html", user=current_user, posts=posts)
+
+@views.route("/Blog")
+@login_required
+def blog():
+    posts = Post.query.all()
+    return render_template("blog.html", user=current_user, posts=posts)
 
 
 @views.route("/create-post", methods=['GET', 'POST'])
@@ -27,7 +32,7 @@ def create_post():
             db.session.add(post)
             db.session.commit()
             flash('Post created!', category='success')
-            return redirect(url_for('views.home'))
+            return redirect(url_for('views.blog'))
 
     return render_template('create_post.html', user=current_user)
 
@@ -46,7 +51,7 @@ def delete_post(id):
         db.session.commit()
         flash('Post deleted.', category='success')
 
-    return redirect(url_for('views.home'))
+    return redirect(url_for('views.blog'))
 
 
 @views.route("/posts/<username>")
@@ -56,7 +61,7 @@ def posts(username):
 
     if not user:
         flash('No user with that username exists.', category='error')
-        return redirect(url_for('views.home'))
+        return redirect(url_for('views.blog'))
 
     posts = user.posts
     return render_template("posts.html", user=current_user, posts=posts, username=username)
@@ -79,7 +84,7 @@ def create_comment(post_id):
         else:
             flash('Post does not exist.', category='error')
 
-    return redirect(url_for('views.home'))
+    return redirect(url_for('views.blog'))
 
 
 @views.route("/delete-comment/<comment_id>")
