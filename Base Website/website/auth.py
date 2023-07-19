@@ -3,6 +3,7 @@ from . import db
 from .models import User
 from flask_login import login_user, logout_user, login_required, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
+from .something import RegistrationForm
 
 auth = Blueprint("auth", __name__)
 
@@ -42,8 +43,7 @@ def sign_up():
         db.session.commit()
         flash('Your account has been created! You can now login in', 'success')
         return redirect(url_for('auth.login'))
-    return redirect(url_for('auth.login'))
-return render_template('signup.html', form=form, user=current_user)
+    return render_template('signup.html', form=form, user=current_user)
     
 
 @auth.route("/logout")
