@@ -1,7 +1,12 @@
-from flask import Blueprint, render_template, request, flash, redirect, url_for, jsonify
+from flask import Blueprint, render_template, request, flash, redirect, url_for, jsonify    
 from flask_login import login_required, current_user
-from .models import Post, User, Comment, Like
-from . import db
+from models import User
+from models import Post
+from models import Comment
+from models import Like
+from website import db
+
+
 
 views = Blueprint("views", __name__)
 

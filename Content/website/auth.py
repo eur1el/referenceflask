@@ -1,9 +1,10 @@
 from flask import Blueprint, render_template, redirect, url_for, request, flash
-from . import db
-from .models import User
+from models import User
 from flask_login import login_user, logout_user, login_required, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
-from .forms import RegistrationForm
+from forms import RegistrationForm
+from website import db
+
 
 auth = Blueprint("auth", __name__)
 
@@ -31,13 +32,13 @@ def login():
 @auth.route("/sign-up", methods=['GET', 'POST'])
 def sign_up():
     if current_user.is_authenticated:
-        #if user is already signed up send them straight to home page
+        # if user is already signed up send them straight to home page
         return redirect(url_for('home'))
     form = RegistrationForm
     if form.validate_on_submit():
-        #generate hashed pssword from inputted password
+        # generate hashed pssword from inputted password
         hashed_password = generate_password_hash((form.password.data), method='sha256')
-        #user is composed of username from form, email from form and a hashed password generated  from the form password
+        # user is composed of username from form, email from form and a hashed password generated  from the form password
         user = User(username=form.usermame.data, email =form.email.data, password = hashed_password)
         db.session.add(User)
         db.session.commit()
