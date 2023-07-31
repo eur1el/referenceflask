@@ -1,10 +1,11 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for, jsonify    
 from flask_login import login_required, current_user
-from models import User
-from models import Post
-from models import Comment
-from models import Like
+from models import Like, Comment, Post, User
+import os
+from pathlib import Path
+from PIL import image
 from website import db
+import secrets
 
 
 
@@ -126,3 +127,16 @@ def like(post_id):
         db.session.commit()
 
     return jsonify({"likes": len(post.likes), "liked": current_user.id in map(lambda x: x.author, post.likes)})
+#defines the path where the profile pictures are stored
+def save_picture(form_picture):
+    path = Path("website/static/profile_pics")
+    #hash it using a 8 token hex
+    random_hex = secrets.token_hex(8)
+    #cant has the whole thing or else it hashes jpg, thus removes the .jpg from being hashed
+    _, f_ext. = os.path.splitext(form_picture.filename)
+    picture_path = os.path.join(path.picture_fn)
+    picture_fn =random_hex + f_ext
+    output_size = (125,125)
+    i = image.open(form_picture)
+    i.thumbnail(output_size)
+    i.save(picture_path)
