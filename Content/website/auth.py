@@ -39,7 +39,7 @@ def sign_up():
         # generate hashed pssword from inputted password
         hashed_password = generate_password_hash((form.password.data), method='sha256')
         # user is composed of username from form, email from form and a hashed password generated  from the form password
-        user = User(username=form.usermame.data, email =form.email.data, password = hashed_password)
+        user = User(username=form.usermame.data, email =form.email.data, password=hashed_password)
         db.session.add(User)
         db.session.commit()
         flash('Your account has been created! You can now login in', 'success')
