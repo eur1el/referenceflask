@@ -1,10 +1,9 @@
 from flask import Blueprint, render_template, redirect, url_for, request, flash
-from models import User
+from . import db
+from .models import User
 from flask_login import login_user, logout_user, login_required, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
-from forms import RegistrationForm
-from website import db
-
+from .forms import RegistrationForm
 
 auth = Blueprint("auth", __name__)
 
@@ -28,24 +27,20 @@ def login():
 
     return render_template("login.html", user=current_user)
 
-
 @auth.route("/sign-up", methods=['GET', 'POST'])
 def sign_up():
     if current_user.is_authenticated:
-        # if user is already signed up send them straight to home page
         return redirect(url_for('home'))
-    form = RegistrationForm
+    form = RegistrationForm()
     if form.validate_on_submit():
-        # generate hashed pssword from inputted password
         hashed_password = generate_password_hash((form.password.data), method='sha256')
-        # user is composed of username from form, email from form and a hashed password generated  from the form password
-        user = User(username=form.usermame.data, email =form.email.data, password=hashed_password)
-        db.session.add(User)
+        user = User(username=form.username.data, email=form.email.data, password=hashed_password)
+        db.session.add(user)
         db.session.commit()
-        flash('Your account has been created! You can now login in', 'success')
+        flash('Your account has been created! You are now able to log in', 'success')
         return redirect(url_for('auth.login'))
     return render_template('signup.html', form=form, user=current_user)
-    
+
 
 @auth.route("/logout")
 @login_required
