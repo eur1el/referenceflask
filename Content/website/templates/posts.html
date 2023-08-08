@@ -1,8 +1,12 @@
 {% extends "posts_div.html" %} {% block title %}{{username}}'s Posts{% endblock
-%} {% block header %} {{username}}'s posts {% endblock %} {% block footer %}
-<div align="center">
-  <a href="/home"
-    ><button type="button" class="btn btn-primary btn-lg">Back</button></a
-  >
-</div>
-{% endblock %}
+  %} {% block header %} {{username}}'s posts {% endblock %} {% block footer %}
+  <div align="center">
+  <!-- Div aligned to the center -->
+    <a href="/home">
+      <!-- Link to go back to the "/home" page -->
+      <button type="button" class="btn btn-primary btn-lg">Back</button>
+       <!-- Button to go back to the home page -->
+    </a>
+  </div>
+  {% endblock %}
+  

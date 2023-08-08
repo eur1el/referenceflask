@@ -1,18 +1,24 @@
 {% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
-%}
-<h1 align="center">Make a Post</h1>
-
-<form method="POST">
-  <textarea name="text" id="text" class="form-control"></textarea>
+  %}
+  <h1 align="center">Make a Post</h1>
+  <!-- Heading "Make a Post" aligned to the center -->
+  
+  <form method="POST">
+    <textarea name="text" id="text" class="form-control"></textarea>
+      <!-- Textarea input for the post content with the class "form-control" for Bootstrap styling -->
+    <br />
+    <div align="center">
+      <!-- Div aligned to the center -->
+  
+      <button type="submit" class="btn btn-lg btn-primary">Post</button>
+    </div>
+  </form>
   <br />
   <div align="center">
-    <button type="submit" class="btn btn-lg btn-primary">Post</button>
+    <!-- Div aligned to the center -->
+    <a href="/home"><button type="button" class="btn btn-lg btn-secondary">Back</button></a>
+      <!-- Button to go back to the "/home" page -->
+  
   </div>
-</form>
-<br />
-<div align="center">
-  <a href="/home"
-    ><button type="button" class="btn btn-lg btn-secondary">Back</button></a
-  >
-</div>
-{% endblock %}
+  {% endblock %}
+  
