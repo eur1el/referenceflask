@@ -1,3 +1,4 @@
+# importing code from plugins or other existing code
 from flask import Blueprint, render_template, redirect, url_for, request, flash
 from . import db
 from .models import User

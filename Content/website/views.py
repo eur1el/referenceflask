@@ -1,3 +1,4 @@
+# importing code from plugins or other existing code
 import os
 from pathlib import Path
 from PIL import Image 
@@ -8,12 +9,13 @@ from .models import Post, User, Comment, Like
 from .forms import RegistrationForm, UdateAccountForm
 from . import db
 
-
+#
 views = Blueprint("views", __name__)
 
-
+#
 @views.route("/")
 
+#
 @views.route("/home")
 def home():
     posts = Post.query.all()

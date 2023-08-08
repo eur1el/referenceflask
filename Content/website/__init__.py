@@ -1,3 +1,4 @@
+# importing code from plugins or other existing code
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from os import path
