@@ -1,15 +1,18 @@
+<!--Uses base template's code for base html site-->
+<!--Displays and styles posts with information, allow liking and deletion of post, and comments-->
 {% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
   %}
   <h1 align="center">{% block header %}Posts{% endblock %}</h1>
   <div id="posts">
+    <!--Posts-->
     {% for post in posts %}
     <div class="card border-dark">
+      <!--Displays profile image-->
       <img class="rounded-circle article-img" src="{{ url_for('static', filename='profile_pics/' + post.user.image_file) }}">
       <div class="card-header d-flex justify-content-between align-items-center">
         <a href="/posts/{{post.user.username}}">{{post.user.username}}</a>
-        <!-- Link to the author's profile page -->
         <div>
-          <!-- Div for like button and like count -->
+          <!--Liking Information-->
           <span id="likes-count-{{post.id}}">
           {{ post.likes|length }}</span> 
           {% if user.id in post.likes|map(attribute="author")|list %}
@@ -17,50 +20,50 @@
             class="fas fa-thumbs-up"
             id="like-button-{{post.id}}"
             onclick="like({{post.id}})"
-            
           ></i>
           {% else %}
           <i
-          
             class="far fa-thumbs-up"
             id="like-button-{{post.id}}"
             onclick="like({{post.id}})"
-            
-          ></i> 
+          ></i>
           {% endif %} {% if user.id == post.author %}
           <div class="btn-group">
-               <!-- Button group for the delete option -->
             <button
               type="button"
               class="btn btn-sm btn-primary dropdown-toggle"
               data-bs-toggle="dropdown"
             ></button>
             <ul class="dropdown-menu">
-            <!-- Dropdown menu for the delete option -->
               <li>
-                <a href="/delete-post/{{post.id}}" class="dropdown-item">Delete</a>
-                 <!-- Delete option for the author to delete their post -->
+                <a href="/delete-post/{{post.id}}" class="dropdown-item"
+                  >Delete</a
+                >
               </li>
             </ul>
           </div>
           {% endif %}
         </div>
       </div>
+      <!--Comments-->
       <div class="card-body">
+        <div class="card-text post-title">{{post.title}}</div>
+        <br />
         <div class="card-text">{{post.text}}</div>
-        <br/>
+        <br />
         <div class="collapse" id="comments-{{post.id}}">
           <div class="card">
             <div class="card-body" id="comments-expanded-{{post.id}}">
               {% for comment in post.comments %}
               <div class="d-flex justify-content-between align-items-center">
                 <div>
-                  <a href="/posts/{{comment.user.username}}">
-                    {{comment.user.username}}
-                  </a>: {{comment.text}}
+                  <a href="/posts/{{comment.user.username}}"
+                    >{{comment.user.username}}</a
+                  >: {{comment.text}}
                 </div>
                 <div>
                   <small class="text-muted"> {{comment.date_created}}</small>
+                  <!--Deleting Comment-->
                   {% if user.id == comment.author or user.id == post.author %}
                   <div class="btn-group">
                     <button
@@ -70,7 +73,11 @@
                     ></button>
                     <ul class="dropdown-menu">
                       <li>
-                        <a href="/delete-comment/{{comment.id}}" class="dropdown-item">Delete</a>
+                        <a
+                          href="/delete-comment/{{comment.id}}"
+                          class="dropdown-item"
+                          >Delete</a
+                        >
                       </li>
                     </ul>
                   </div>
@@ -108,25 +115,29 @@
       <div class="card-footer text-muted">{{post.date_created}}</div>
     </div>
     <br/ > {% endfor %}
-  </div>  
+  </div>
+  
+  <!--Allows scrolling between pages on blog posts-->
   {% for page_num in posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
   {% if page_num %}
     {% if posts.page == page_num %}
-        <a class="btn btn-outline-info mb-4" href="{{ url_for('views.blog', page=page_num)}}">{{ page_num }}</a>
-      {% else %}   
-        <a class="btn btn-outline-info mb-4" href="{{ url_for('views.blog', page=page_num)}}">{{ page_num }}</a>
-      {%endif%}
+      <a class="btn btn-outline-info mb-4" href="{{ url_for('views.blog', page=page_num) }}">{{ page_num }}</a>
+    {% else %}  
+      <a class="btn btn-outline-info mb-4" href="{{ url_for('views.blog', page=page_num) }}">{{ page_num }}</a>
+    {% endif %}
   {% else %}
-            . . . 
-  {%endif%}
-  {% endfor %}
+    ...
+  {% endif %}
+  {% endfor %}    
+  
+  
   {% block footer %}
   <div align="center">
-    <a href="/create-post">
-      <button type="button" class="btn btn-primary btn-lg">
+    <a href="/create-post"
+      ><button type="button" class="btn btn-primary btn-lg">
         Create a Post
-      </button>
-    </a>
+      </button></a
+    >
   </div>
   {% endblock %} {% endblock %}
   

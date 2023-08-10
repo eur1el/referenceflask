@@ -1,24 +1,51 @@
+<!--Uses base template's code for base html site-->
 {% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
   %}
-  <h1 align="center">Make a Post</h1>
-  <!-- Heading "Make a Post" aligned to the center -->
   
-  <form method="POST">
-    <textarea name="text" id="text" class="form-control"></textarea>
-      <!-- Textarea input for the post content with the class "form-control" for Bootstrap styling -->
-    <br />
-    <div align="center">
-      <!-- Div aligned to the center -->
+  <div class="content-section">
+    <form method="POST">
+      {{ form.hidden_tag() }}
   
-      <button type="submit" class="btn btn-lg btn-primary">Post</button>
-    </div>
-  </form>
-  <br />
-  <div align="center">
-    <!-- Div aligned to the center -->
-    <a href="/home"><button type="button" class="btn btn-lg btn-secondary">Back</button></a>
-      <!-- Button to go back to the "/home" page -->
+      <fieldset class="form">
+        <legend class="border-bottom mb-4">Create Post</legend>
+        <div class="form-group">
+          {{ form.title.label(class="form-control-label") }}
   
+          <!--If form is invalid shows error message-->
+          {% if form.title.errors %}
+            {{ form.title(class="form-control form-control-lg is-invalid") }}
+            <div class="invalid-feedback">
+              {% for error in form.title.errors %}
+                <span>{{ error }}</span>
+              {% endfor %}
+            </div>
+          {% else %}
+            {{ form.title(class="form-control form-control-lg")}}
+          {% endif %}
+        </div>
+  
+        <div class="form-group">
+          {{ form.text.label(class="form-control-label") }}
+  
+          <!--If form is invalid shows error message-->
+          {% if form.text.errors %}
+            {{ form.text(class="form-control form-control-lg is-invalid") }}
+            <div class="invalid-feedback">
+              {% for error in form.text.errors %}
+                <span>{{ error }}</span>
+              {% endfor %}
+            </div>
+          {% else %}
+            {{ form.text(class="form-control form-control-lg")}}
+          {% endif %}
+        </div>
+  
+      </fieldset> 
+      </br>
+      <div class="form-group">
+        {{ form.submit(class="btn btn-outline-info")}} 
+    </form>
   </div>
+  
   {% endblock %}
   
