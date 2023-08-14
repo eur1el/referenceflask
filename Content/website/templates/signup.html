@@ -1,13 +1,15 @@
-{% extends "base.html" %}
-{% block title %}Sign Up{% endblock %}
-{% block content %}
-<div class="content-selection">
-  <form method="POST" action="">
+<!--Uses base template's code for base html site-->
+<!--Signup page that allows users to sign up their account-->
+{% extends "base.html" %} {% block title %}Sign Up{% endblock %} {% block content %}
+<div class="content-section">
+  <form method="POST">
     {{ form.hidden_tag() }}
-    <fieldset class="form-group">
-      <legend class="border-bottom mb-4">Join Today</legend>
+    <fieldset class="form">
+      <legend class="border-bottom mb-4">Join Today!</legend>
       <div class="form-group">
         {{ form.username.label(class="form-control-label") }}
+
+        <!--If form is invalid shows error message-->
         {% if form.username.errors %}
           {{ form.username(class="form-control form-control-lg is-invalid") }}
           <div class="invalid-feedback">
@@ -16,13 +18,14 @@
             {% endfor %}
           </div>
         {% else %}
-          {{ form.username(class="form-control form-control-lg") }}
-        {% endif %}
+          {{ form.username(class="form-control form-control-lg")}}
+      {% endif %}
       </div>
 
-      <!--email-->
       <div class="form-group">
         {{ form.email.label(class="form-control-label") }}
+
+        <!--If form is invalid shows error message-->
         {% if form.email.errors %}
           {{ form.email(class="form-control form-control-lg is-invalid") }}
           <div class="invalid-feedback">
@@ -31,12 +34,14 @@
             {% endfor %}
           </div>
         {% else %}
-          {{ form.email(class="form-control form-control-lg") }}
-        {% endif %}
+          {{ form.email(class="form-control form-control-lg")}}
+      {% endif %}
       </div>
-
+      
       <div class="form-group">
         {{ form.password.label(class="form-control-label") }}
+
+        <!--If form is invalid shows error message-->
         {% if form.password.errors %}
           {{ form.password(class="form-control form-control-lg is-invalid") }}
           <div class="invalid-feedback">
@@ -45,36 +50,35 @@
             {% endfor %}
           </div>
         {% else %}
-          {{ form.password(class="form-control form-control-lg") }}
-        {% endif %}
+          {{ form.password(class="form-control form-control-lg")}}
+      {% endif %}
       </div>
 
       <div class="form-group">
-        {{ form.confirm_password.label(class="form-control-label") }}
-        {% if form.confirm_password.errors %}
-          {{ form.confirm_password(class="form-control form-control-lg is-invalid") }}
+        {{ form.confirmpassword.label(class="form-control-label") }}
+
+        <!--If form is invalid shows error message-->
+        {% if form.confirmpassword.errors %}
+          {{ form.confirmpassword(class="form-control form-control-lg is-invalid") }}
           <div class="invalid-feedback">
-            {% for error in form.confirm_password.errors %}
+            {% for error in form.confirmpassword.errors %}
               <span>{{ error }}</span>
             {% endfor %}
           </div>
         {% else %}
-          {{ form.confirm_password(class="form-control form-control-lg") }}
-        {% endif %}
-      </div>
-    </fieldset>
+          {{ form.confirmpassword(class="form-control form-control-lg")}}
+      {% endif %}
+      </div>      
 
+    </fieldset> 
     </br>
-
     <div class="form-group">
-      {{ form.submit(class="btn btn-outline-info") }}
-    </div>
+      {{ form.submit(class="btn btn-outline-info")}} 
   </form>
-
-  <div class="border-top pt-3">
-    <small class="text-muted">
-      Already have an account? <a class="m1-2" href="{{ url_for('auth.login') }}">Sign In</a>
-    </small>
-  </div>
 </div>
+
+<div class="border-top pt-3">
+  <small class="text-muted">
+    Already have an account?<a class="ml-2" href="{{ url_for('auth.login') }}">Sign In</a>
+
 {% endblock %}

@@ -1,18 +1,51 @@
+<!--Uses base template's code for base html site-->
 {% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
-%}
-<h1 align="center">Make a Post</h1>
-
-<form method="POST">
-  <textarea name="text" id="text" class="form-control"></textarea>
-  <br />
-  <div align="center">
-    <button type="submit" class="btn btn-lg btn-primary">Post</button>
+  %}
+  
+  <div class="content-section">
+    <form method="POST">
+      {{ form.hidden_tag() }}
+  
+      <fieldset class="form">
+        <legend class="border-bottom mb-4">Create Post</legend>
+        <div class="form-group">
+          {{ form.title.label(class="form-control-label") }}
+  
+          <!--If form is invalid shows error message-->
+          {% if form.title.errors %}
+            {{ form.title(class="form-control form-control-lg is-invalid") }}
+            <div class="invalid-feedback">
+              {% for error in form.title.errors %}
+                <span>{{ error }}</span>
+              {% endfor %}
+            </div>
+          {% else %}
+            {{ form.title(class="form-control form-control-lg")}}
+          {% endif %}
+        </div>
+  
+        <div class="form-group">
+          {{ form.text.label(class="form-control-label") }}
+  
+          <!--If form is invalid shows error message-->
+          {% if form.text.errors %}
+            {{ form.text(class="form-control form-control-lg is-invalid") }}
+            <div class="invalid-feedback">
+              {% for error in form.text.errors %}
+                <span>{{ error }}</span>
+              {% endfor %}
+            </div>
+          {% else %}
+            {{ form.text(class="form-control form-control-lg")}}
+          {% endif %}
+        </div>
+  
+      </fieldset> 
+      </br>
+      <div class="form-group">
+        {{ form.submit(class="btn btn-outline-info")}} 
+    </form>
   </div>
-</form>
-<br />
-<div align="center">
-  <a href="/home"
-    ><button type="button" class="btn btn-lg btn-secondary">Back</button></a
-  >
-</div>
-{% endblock %}
+  
+  {% endblock %}
+  
