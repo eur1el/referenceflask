@@ -10,7 +10,6 @@
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
-    <link rel ="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css')}}"
     <script
       src="https://kit.fontawesome.com/999ca2bb93.js"
       crossorigin="anonymous"
@@ -30,12 +29,11 @@
         </button>
         <div class="collapse navbar-collapse" id="navbar">
           <div class="navbar-nav">
-            <a class="nav-item nav-link" href="/home">Home</a>
             <a class="nav-item nav-link" href="/aboutus.html">About Us</a>
             <a class="nav-item nav-link" href="/contactus.html">Contact Us</a>
+            <a class="nav-item nav-link" href="/home">Home</a>
             {% if user.is_authenticated %}
             <a class="nav-item nav-link" href="/logout">Logout</a>
-            <a class="nav-item nav-link" href="/blog">Blog</a>
             {% else %}
             <a class="nav-item nav-link" href="/login">Login</a>
             <a class="nav-item nav-link" href="/sign-up">Sign Up</a>
