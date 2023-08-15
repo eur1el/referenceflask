@@ -56,11 +56,13 @@
               
             <!--Buttons that allow transfer between pages, dynamically changes depending whether user is logged in/out-->
             <a class="nav-item nav-link" href="/home">Home</a>
+            <a class="nav-item nav-link" href="/about">About Me</a>
             {% if user.is_authenticated %}
             <a class="nav item nav-link" href="/account">Account</a>
-            <span class="text-white mx-1">&middot;</span>
             <a class="nav-item nav-link" href="/logout">Logout</a>
             <a class="nav-item nav-link" href="/blog">Blog</a>
+            <a class="nav-item nav-link" href="/tutorials">Tutorials</a>
+            
             {% else %}
             <a class="nav-item nav-link" href="/login">Login</a>
             <a class="nav-item nav-link" href="/sign-up">Sign Up</a>

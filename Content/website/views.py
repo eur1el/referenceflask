@@ -20,6 +20,12 @@ def home():
     page = Post.query.all()
     return render_template("home.html", user=current_user, posts=posts)
 
+@views.route("/")
+@views.route("/about")
+def aboutme():
+    page = Post.query.all()
+    return render_template("aboutme.html", user=current_user, posts=posts)
+
 
 @views.route("/blog")
 @login_required
@@ -27,6 +33,14 @@ def blog():
     page = request.args.get('page', 1, type=int)
     posts = Post.query.order_by(Post.date_created.desc()).paginate(page=page, per_page=4)
     return render_template("blog.html", user=current_user, posts=posts)
+
+@views.route("/tutorials")
+@login_required
+def tutorials():
+    page = request.args.get('page', 1, type=int)
+    posts = Post.query.order_by(Post.date_created.desc()).paginate(page=page, per_page=4)
+    return render_template("tutorials.html", user=current_user, posts=posts)
+
 
 @views.route("/create-post", methods=['GET', 'POST'])
 @login_required
