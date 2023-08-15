@@ -1,11 +1,13 @@
 <!--Extends code from base.html for a basic page-->
 {% extends "base.html" %} {% block title %}Home{% endblock %}
 {% block content %}
+<br>
+<br>
 
 <body class="d-flex flex-column h-100">
     <main class="flex-shrink-0">
         <!-- Header-->
-        <header class="bg-dark py-5">
+        <header class="bg-custom py-5">
             <div class="container px-5">
                 <div class="row gx-5 align-items-center justify-content-center">
                     <div class="col-lg-8 col-xl-7 col-xxl-6">
@@ -13,55 +15,29 @@
                             <h1 class="display-5 fw-bolder text-white mb-2"></h1>
                             <p class="lead fw-normal text-white-50 mb-4">Discuss and show your creations with others or learn how to create media with Adobe Premiere Pro! </p>
                             <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
-                                <a class="btn btn-primary btn-lg px-4 me-sm-3" href="#features">More Info</a>
+                                <a class="btn btn-outline-light btn-lg px-4 me-sm-3" href="#features">More Info</a>
                                 <a class="btn btn-outline-light btn-lg px-4" href="http://127.0.0.1:5000/sign-up">Sign Up</a>
                             </div>
                         </div>
                     </div>
                     <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img class="img-fluid rounded-3 my-5"> 
-                        <iframe width="420" height="315"
-                        src="https://www.youtube.com/watch?v=cNZtsGTvJeY&ab_channel=BetaSquad">
-                        </iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/XceyW35RX_0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>
             </div>
         </header>
         <!-- Features section-->
-        <section class="py-5" id="Premiere Pro Info">
+        <section class="py-5">
             <div class="container px-5 my-5">
-                <div class="row gx-5">
-                    <div class="col-lg-4 mb-5 mb-lg-0"><h2 class="fw-bolder mb-0">What is Adobe Premiere Pro?</h2></div>
-                    <div class="col-lg-8">
-                        <div class="row gx-5 row-cols-1 row-cols-md-2">
-                            <div class="col mb-5 h-100">
-                                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-collection"></i></div>
-                                <h2 class="h5"> Premiere Pro</h2>
-                                <p class="mb-0">Watch & Read Tutorials in order to enhance the quality of your media!</p>
-                            </div>
-                            <div class="col mb-5 h-100">
-                                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-building"></i></div>
-                                <h2 class="h5">Capabilities</h2>
-                                <p class="mb-0">Gain exposure by sharing your projects so others can learn and appreciate it.</p>
-                            </div>
-                            <div class="col mb-5 mb-md-0 h-100">
-                                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-toggles2"></i></div>
-                                <h2 class="h5"> Effects & Plugins</h2>
-                                <p class="mb-0">Show your support or provide constructive critisicm on others posts (no swearing or bad manners)</p>
-                            </div>
-                            <div class="col h-100">
-                                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-toggles2"></i></div>
-                                <h2 class="h5">Computer Requirements</h2>
-                                <p class="mb-0">An Intel 6thGen or newer CPU - or an AMD Ryzen 1000 series or newer CPU.
-                                    Microsoft Windows 10 (64-bit) version 1909 or later.
-                                    8 GB of Ram.
-                                    2 GB of GPU memory.
-                                    8 GB of hard disk space for installation.
-                                    1920 x 1080 display.
-                                    An ASIO-compatible sound card.
-                                    Internet connection.</p>
-                            </div>
+                <div class="row gx-5 justify-content-center">
+                    <div class="col-lg-8 col-xl-6">
+                        <div class="text-center">
+                            <h2 class="fw-bolder">About Premiere Pro</h2>
+                            <p class="lead fw-normal text-muted mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Habitant morbi tristique senectus et netus. Ridiculus mus mauris vitae ultricies leo. Convallis posuere morbi leo urna molestie at elementum. Ultrices neque ornare aenean euismod elementum nisi quis eleifend quam. Mauris pharetra et ultrices neque ornare aenean euismod. Cursus sit amet dictum sit amet justo. In ornare quam viverra orci. Augue mauris augue neque gravida in fermentum et sollicitudin. Etiam sit amet nisl purus in mollis nunc sed id. Consectetur lorem donec massa sapien faucibus et molestie. Erat imperdiet sed euismod nisi porta lorem mollis aliquam ut. Vulputate eu scelerisque felis imperdiet. Sem viverra aliquet eget sit amet tellus cras adipiscing enim. Maecenas pharetra convallis posuere morbi leo urna.
+                            </p>
                         </div>
                     </div>
                 </div>
+                              
             </div>
         </section>
         <section class="py-5" id="features">
@@ -180,7 +156,7 @@
         </section>
     </main>
     <!-- Footer-->
-    <footer class="bg-dark py-4 mt-auto">
+    <footer class="footer-custom py-4 mt-auto">
         <div class="container px-5">
             <div class="row align-items-center justify-content-between flex-column flex-sm-row">
                 <div class="col-auto"><div class="small m-0 text-white">Copyright &copy; euriels edits 2023</div></div>
