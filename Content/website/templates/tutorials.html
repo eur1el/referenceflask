@@ -1,0 +1,83 @@
+  <!--Extends code from base.html for a basic page-->
+{% extends "base.html" %} {% block title %}Home{% endblock %}
+{% block content %}
+<br>
+<br>
+    <title>Premiere Pro Tutorials</title>
+    <style>
+        h1{
+        color: #EB78FF;
+
+        }
+        h2{
+            text-align: center;
+            color: #250031;
+        }
+        body {
+            text-align: center;
+            color: #EB78FF;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #250031;
+            color: #EB78FF;
+            text-align: center;
+            padding: 10px;
+        }
+        .tutorial {
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Premiere Pro Tutorials</h1>
+        <p>Enhance your skills with these informative tutorials!</p>
+    </header>
+    <div class="container">
+        <div class="tutorial">
+            <h2>Planning/Marking according to the beat</h2>
+            <p>Learn how to plan your upcoming edit by creating markers according to the beat, to improve quality for viewers </p>   
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/vUUbDXMWMRc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+        <div class="tutorial">
+            <h2>Velocity</h2>
+            <p>How to use twixtor and time remapping to slow down or speed up clips to match the previous marked beats.</p>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/axtHRGE0KMI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+        <div class="tutorial">
+            <h2>Effects</h2>
+            <p>Learn how to create effects to create emphasis on certain clips</p>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/CUPcfHHbKQE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+        <!-- Add more tutorials here -->
+    <div class="tutorial">
+        <h2>Plugins</h2>
+        <p>Learn how to install plugins, and what certain plugins do</p>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/93RMVIHQ-9E" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
+</div>
+</div>
+    </body>
+    <!-- Footer-->
+    <footer class="footer-custom py-4 mt-auto">
+        <div class="container px-5">
+            <div class="row align-items-center justify-content-between flex-column flex-sm-row">
+                <div class="col-auto"><div class="small m-0 text-white">Copyright &copy; euriels edits 2023</div></div>
+                <div class="col-auto">
+                    <a class="link-light small" href="#!">Privacy</a>
+                    <span class="text-white mx-1">&middot;</span>
+                    <a class="link-light small" href="#!">Terms</a>
+                    <span class="text-white mx-1">&middot;</span>
+                    <a class="link-light small" href="#!">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+{% endblock%}
