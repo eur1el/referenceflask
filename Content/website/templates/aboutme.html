@@ -1,7 +1,103 @@
-<!--Extends code from base.html for a basic page-->
-{% extends "base.html" %} {% block title %}Home{% endblock %}
-{% block content %}
-<br>
+<!DOCTYPE html>
+<!--This is the base template, other templates take this base template and use it, so less code is used and everything is consistent-->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--Brings in bootstrap so we don't have to use css-->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <!--FontAwesome-->
+    <script
+      src="https://kit.fontawesome.com/999ca2bb93.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>{% block title %}{% endblock %}</title>
+    <style>
+    /* Modify the background color */
+.navbar-custom {
+	background-color: #250031;
+}
+.footer-custom {
+	background-color: #250031;
+}
+.bg-custom{
+  background-color: #250031;
+}
+
+</style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-custom navbar-dark">
+      <!--NavBar with burger dropdown-->  
+      <div class="container-fluid">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbar"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbar">
+          &nbsp;
+          <a class="navbar-nav" href="/home"><img
+            src=
+"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Adobe_Premiere_Pro_Logo.svg/2048px-Adobe_Premiere_Pro_Logo.svg.png" 
+              alt="" width= "40" 
+              height="40"></a>&nbsp;&nbsp;
+              <div class="navbar-nav">
+              
+            <!--Buttons that allow transfer between pages, dynamically changes depending whether user is logged in/out-->
+            <a class="nav-item nav-link" href="/home">Home</a>
+            <a class="nav-item nav-link" href="/about">About Me</a>
+            {% if user.is_authenticated %}
+            <a class="nav item nav-link" href="/account">Account</a>
+            <a class="nav-item nav-link" href="/logout">Logout</a>
+            <a class="nav-item nav-link" href="/blog">Blog</a>
+            <a class="nav-item nav-link" href="/tutorials">Tutorials</a>
+            
+            {% else %}
+            <a class="nav-item nav-link" href="/login">Login</a>
+            <a class="nav-item nav-link" href="/sign-up">Sign Up</a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!--Message Flashing, flashes information when needed-->
+    {% with messages = get_flashed_messages(with_categories=true) %} {% if
+    messages %} {% for category, message in messages %} {% if category ==
+    'error' %}
+    <div class="alert alert-danger alter-dismissible fade show" role="alert">
+      {{ message }}
+      <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+    {% else %}
+    <div class="alert alert-success alter-dismissible fade show" role="alert">
+      {{ message }}
+      <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+    {% endif %} {% endfor %} {% endif %} {% endwith %}
+    <div class="container">{% block content %}{% endblock %}</div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      type="text/javascript"
+      src="{{ url_for('static', filename='index.js')}}"
+    ></script>
+  </body>
+</html>
+
 <br>
 <style>
  *{
@@ -16,7 +112,7 @@
 .wrapper{
     min-height: 100vh;
     width: 100%;
-    background-image: url('https://media.discordapp.net/attachments/1026069245538357331/1140993523722752030/louiiis.JPG?width=703&height=468');
+    background-image: url('https://color-hex.org/colors/eb78ff.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -46,14 +142,8 @@ blockquote{
     font-size: 20px;
     margin-top: 30px;
 }
-article h5{
-    text-transform: uppercase;
-    font-size:27px;
-    margin-top:30px;
-}
-article p{
-    font-size: 17px;
-}
+
+
 </style>
 </head>
 <body>
@@ -61,12 +151,12 @@ article p{
         <div class="testimonial">
             <article>
                 <h1>about me</h1>
-                <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png">
+                <img src="https://cdn.discordapp.com/attachments/1022053536139329626/1141020317213540543/jiwoo.png">
                 <blockquote>
-                    dawdwdADawdaWDAWDAWdAWDaW
+                    I'm Euriel Beltran, a dedicated Year 13 student at Sancta Maria College. I'm excited to introduce my digital project—a captivating website centered on Adobe Premiere Pro. My passion for content creation and media drives this endeavor, recognizing their essential role in modern communication.As society embraces the digital age, the ability to curate engaging content becomes indispensable. I'm eager to embark on this journey, not only to enhance my skills but also to contribute to the evolving media landscape. Through my website, I aspire to inspire, educate, and unite a community of like-minded enthusiasts poised to excel in this exciting arena.
                 </blockquote>
                 <h5>Euriel Beltran</h5>
-                <p>hello guys</p>
+                <p>Current Year 13 student attending Sancta Maria College as of 2023</p>
             </article>
         </div>
     </div>
@@ -89,4 +179,3 @@ article p{
 </body>
 
 
-{% endblock%}
