@@ -26,6 +26,24 @@ def aboutme():
     page = Post.query.all()
     return render_template("aboutme.html", user=current_user, posts=posts)
 
+@views.route("/")
+@views.route("/contact")
+def contact():
+    page = Post.query.all()
+    return render_template("contact.html", user=current_user, posts=posts)
+
+@views.route("/")
+@views.route("/terms")
+def terms():
+    page = Post.query.all()
+    return render_template("terms.html", user=current_user, posts=posts)
+
+@views.route("/")
+@views.route("/privacy")
+def privacy():
+    page = Post.query.all()
+    return render_template("privacy.html", user=current_user, posts=posts)
+
 
 @views.route("/blog")
 @login_required
