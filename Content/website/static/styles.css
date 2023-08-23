@@ -10846,3 +10846,169 @@ h2{
 
 
 }
+
+* {
+	margin: 0;
+	padding: 0;
+}
+:root {
+	--navbar-height: 59px;
+}
+
+.logo {
+	width: 20%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.logo img {
+	width: 33%;
+	border: 2px solid white;
+	border-radius: 50px;
+}
+
+.navbar {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: sticky;
+	top: 0;
+	cursor: pointer;
+}
+
+.nav-list {
+	width: 70%;
+	display: flex;
+}
+
+.nav-list li {
+	list-style: none;
+	padding: 2px 6px;
+}
+
+.nav-list li a {
+	text-decoration: none;
+	color: white;
+}
+
+.nav-list li a:hover {
+	color: grey;
+}
+
+.rightNav {
+	width: 50;
+	text-align: right;
+}
+
+#search {
+	padding: 5px;
+	font-size: 17px;
+	border: 2px solid grey;
+	border-radius: 9px;
+}
+.btn-sm{
+background-color:black;
+}
+
+.background {
+	background-color: grey;
+	background-blend-mode: darken;
+	background-size: cover;
+}
+
+.box-main {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: white;
+	max-width: 50%;
+	margin: auto;
+	height: 80%;
+}
+
+.text-big {
+	font-family: "Piazzolla", serif;
+	font-weight: bold;
+	font-size: 41px;
+	text-align: center;
+}
+.center {
+	text-align: center;
+}
+
+.text-footer {
+	text-align: center;
+	padding: 30px 0;
+	font-family: "Ubuntu", sans-serif;
+	display: flex;
+	justify-content: center;
+}
+
+.text-small,
+.center {
+	color: #333;
+}
+
+.nav-list li a:hover {
+	color: #555;
+}
+
+
+
+
+#service {
+	display: flex;
+	justify-content: space-between;
+	margin: 40px auto;
+}
+
+
+.h-primary {
+	font-family: "Montserrat", sans-serif;
+	color: #333;
+}
+
+.contact-card {
+	background-color: #fff;
+	padding: 20px;
+	border-radius: 10px;
+	box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+	text-align: center;
+	transition: transform 0.3s, box-shadow 0.3s;
+	margin: 20px;
+}
+
+.contact-card img {
+	max-width: 80px;
+}
+
+.contact-card h2 {
+	font-family: "Montserrat", sans-serif;
+	font-size: 24px;
+	margin-top: 10px;
+}
+
+.card-text {
+	font-size: 16px;
+	margin: 15px 0;
+	color: #555;
+}
+
+.phone-number {
+	font-size: 18px;
+	color: #333;
+	margin-top: 5px;
+}
+
+.contact-card:hover {
+	transform: translateY(-5px);
+	box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+}
+h2{
+  color:#4b0082;
+}
+.youtube-video {
+  aspect-ratio: 16 / 9;
+  width: 100%;
+}
