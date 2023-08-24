@@ -1,33 +1,48 @@
-<!--Extends code from base.html for a basic page-->
-{% extends "base.html" %} {% block title %}Home{% endblock %}
+<!-- Extends code from base.html for a basic page -->
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+
 {% block content %}
 <br>
 <br>
 
+<!-- Main body of the page using flex layout -->
 <body class="d-flex flex-column h-100">
+    <!-- Main content section -->
     <main class="flex-shrink-0">
-        <!-- Header-->
-        <header class=" bg-custom py-5">
+        <!-- Header section -->
+        <header class="bg-custom py-5">
             <div class="container px-5">
+                <!-- Centered row for header content -->
                 <div class="row gx-5 align-items-center justify-content-center">
+                    <!-- Main content column -->
                     <div class="col-lg-8 col-xl-7 col-xxl-6">
+                        <!-- Text content for the header -->
                         <div class="my-5 text-center text-xl-start">
                             <h1 class="display-5 fw-bolder text-white mb-2">All About Media</h1>
-                            <p class="lead fw-normal text-white-50 mb-4">Discuss and show your creations with others or learn how to create media with Adobe Premiere Pro! </p>
+                            <p class="lead fw-normal text-white-50 mb-4">
+                                Discuss and show your creations with others or learn how to create media with Adobe Premiere Pro!
+                            </p>
+                            <!-- Button group for more info and contact buttons -->
                             <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
                                 <a class="btn btn-outline-light btn-lg px-4 me-sm-3" href="#features">More Info</a>
                                 <a class="btn btn-outline-light btn-lg px-4" href="/contact">Contact Me</a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-5 col-xxl-1 d-none d-xl-block text-center"><img class="img-fluid rounded-3 my-5"> 
+                    <!-- Column for an optional image (not provided in the code) -->
+                    <div class="col-xl-5 col-xxl-1 d-none d-xl-block text-center">
+                        <img class="img-fluid rounded-3 my-5"> 
+                    </div>
                 </div>
             </div>
         </header>
+        
+        <!-- Embedded YouTube video -->
         <iframe class="youtube-video" width="560" height="615" src="https://www.youtube.com/embed/XceyW35RX_0" 
         title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-        <!-- Features section-->
+        <!-- Features section -->
         <section class="py-5">
             <div class="container px-5 my-5">
                 <div class="row gx-5 justify-content-center">
@@ -35,152 +50,176 @@
                         <div class="text-center">
                             <h2 class="fw-bolder">About Premiere Pro</h2>
                             <h1 class="lead fw-normal text-muted mb-5">
-                                Adobe Premiere Pro is a professional video editing software developed by Adobe Inc. It is widely used by filmmakers, video editors, and content creators to edit and produce high-quality videos for various purposes, including movies, TV shows, commercials, YouTube videos, and more. Here are some key points to understand about Adobe Premiere Pro:
+                                Adobe Premiere Pro is a powerful video editing tool enjoyed by both professionals and hobbyists. Packed with features, it lets you shape and enhance video and audio in imaginative ways. It seamlessly blends various media, providing tools to snip, adjust, and arrange clips. It's all about those cool effects, smooth transitions, and catchy titles, making it the go-to for crafting top-notch videos for various platforms—be it web content or top-tier broadcasts.
 
-Video Editing: Adobe Premiere Pro allows you to import and arrange video clips, audio, images, and other media files on a timeline. You can then edit and manipulate these elements to create a cohesive and visually appealing video.
 
-User Interface: The software provides a user-friendly interface that includes panels for the timeline, preview, project media, effects, and more. Users can customize the layout based on their preferences and workflow.
 
-Timeline Editing: The timeline is where you arrange and edit your video clips. You can trim, cut, split, and rearrange clips on the timeline to create your desired sequence. Various tools are available to help you precisely edit and manipulate your footage.
- 
- is available through a subscription model as part of Adobe Creative Cloud. This means you pay a monthly or annual fee to access the software, along with updates and additional features.
-
-Whether you're a beginner or an experienced video editor, Adobe Premiere Pro offers a powerful set of tools to create professional-quality videos. It's widely recognized as one of the industry standards for video editing software.
-                            </h>
+                                <!-- Detailed content about Adobe Premiere Pro -->
+                            </h1>
                         </div>
+                    </div>
+                </div>
+            </div>
         </section>
-        <!--feature section-->
+        
+        <!-- Features section continued -->
         <section class="py-5" id="features">
             <div class="container px-5 my-5">
                 <div class="row gx-5">
-                    <div class="col-lg-4 mb-5 mb-lg-0"><h2 class="fw-bolder mb-0">Features of this website.</h2></div>
+                    <!-- Subsection header column -->
+                    <div class="col-lg-4 mb-5 mb-lg-0">
+                        <h2 class="fw-bolder mb-0">Features of this website.</h2>
+                    </div>
+                    <!-- Subsection content column -->
                     <div class="col-lg-8">
+                        <!-- Features listed in a row using Bootstrap cards -->
                         <div class="row gx-5 row-cols-1 row-cols-md-2">
+                            <!-- Feature 1 -->
                             <div class="col mb-5 h-100">
-                                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-collection"></i></div>
-                                <h2 class="h5"> Follow Tutorials! </h2>
-                                <p class="mb-0">Watch & Read Tutorials in order to enhance the quality of your media!</p>
-                            </div>
-                            <div class="col mb-5 h-100">
-                                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-building"></i></div>
-                                <h2 class="h5">Upload your content for others to see!</h2>
-                                <p class="mb-0">Gain exposure by sharing your projects so others can learn and appreciate it.</p>
-                            </div>
-                            <div class="col mb-5 mb-md-0 h-100">
-                                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-toggles2"></i></div>
-                                <h2 class="h5"> Comment on others projects! </h2>
-                                <p class="mb-0">Show your support or provide constructive critisicm on others posts (no swearing or bad manners)</p>
-                            </div>
-                            <div class="col h-100">
-                                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-toggles2"></i></div>
-                                <h2 class="h5">Connect with likeminded people!</h2>
-                                <p class="mb-0">Upload your own profile picture and create your unique username so others can see</p>
-     
+                                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3">
+                                    <!-- Icon for the feature -->
+                                    <i class="bi bi-collection"></i>
                                 </div>
+                                <h2 class="h5"> Follow Tutorials! </h2>
+                                <p class="mb-0">Watch & Read Tutorials to enhance the quality of your media!</p>
+                            </div>
+                            <!-- Feature 2 -->
+                            <div class="col mb-5 h-100">
+                                <!-- Feature icon -->
+                                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3">
+                                    <i class="bi bi-building"></i>
+                                </div>
+                                <h2 class="h5">Upload your content for others to see!</h2>
+                                <p class="mb-0">Gain exposure by sharing your projects for others to learn and appreciate.</p>
+                            </div>
+                            <!-- Feature 3 -->
+                            <div class="col mb-5 mb-md-0 h-100">
+                                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3">
+                                    <i class="bi bi-toggles2"></i>
+                                </div>
+                                <h2 class="h5"> Comment on others' projects! </h2>
+                                <p class="mb-0">Show support or provide constructive criticism on others' posts.</p>
+                            </div>
+                            <!-- Feature 4 -->
+                            <div class="col h-100">
+                                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3">
+                                    <i class="bi bi-toggles2"></i>
+                                </div>
+                                <h2 class="h5">Connect with like-minded people!</h2>
+                                <p class="mb-0">Customize your profile and username for others to see.</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- Tutorial Section-->
+        </section>
+        
+        <!-- Tutorials section -->
         <section class="py-5">
             <div class="container px-5 my-5">
                 <div class="row gx-5 justify-content-center">
                     <div class="col-lg-8 col-xl-6">
                         <div class="text-center">
                             <h2 class="fw-bolder">Tutorials</h2>
-                            <p class="lead fw-normal text-muted mb-5">Login to learn how to create certain effects within Adobe Premiere Pro, 
-                                will require plugins such as Magic Bullet, Sapphire and BCC
+                            <p class="lead fw-normal text-muted mb-5">
+                                Login to learn how to create certain effects within Adobe Premiere Pro,
+                                using plugins such as Magic Bullet, Sapphire, and BCC.
                             </p>
                         </div>
                     </div>
                 </div>
                 <div class="row gx-5">
+                    <!-- Tutorial card 1 -->
                     <div class="col-lg-4 mb-5">
                         <div class="card h-100 shadow border-0">
                             <img class="card-img-top" src="https://i.ytimg.com/vi/VJxpDUY8iuU/maxresdefault.jpg" alt="..." />
                             <div class="card-body p-4">
+                                <!-- Badge for the category -->
                                 <div class="badge bg-primary bg-gradient rounded-pill mb-2">Premiere Pro</div>
-                                <a class="text-decoration-none link-dark stretched-link" href="#signup"><h5 class="card-title mb-3">Velocity</h5></a>
-                                <p class="card-text mb-0">Learn how to use twixtor and time remapping to make a cohesive edit</p>
+                                <a class="text-decoration-none link-dark stretched-link" href="#signup">
+                                    <!-- Tutorial title -->
+                                    <h5 class="card-title mb-3">Velocity</h5>
+                                </a>
+                                <!-- Tutorial description -->
+                                <p class="card-text mb-0">Learn how to use twixtor and time remapping to make a cohesive edit
+                                    </p>
+                                </div>
+                                <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
+                                    <div class="d-flex align-items-end justify-content-between">
+                                        <div class="d-flex align-items-center">
+                                            <img class="rounded-circle me-3" src="https://dummyimage.com/40x40/ced4da/6c757d" alt="..." />
+                                            <div class="small">
+                                                <div class="fw-bold">Euriel Beltran</div>
+                                                <div class="text-muted">March 12, 2023 &middot; 6 min read</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
-                                <div class="d-flex align-items-end justify-content-between">
-                                    <div class="d-flex align-items-center">
-                                        <img class="rounded-circle me-3" src="https://dummyimage.com/40x40/ced4da/6c757d" alt="..." />
-                                        <div class="small">
-                                            <div class="fw-bold">Euriel Beltran</div>
-                                            <div class="text-muted">March 12, 2023 &middot; 6 min read</div>
+                        </div>
+                        <div class="col-lg-4 mb-5">
+                            <div class="card h-100 shadow border-0">
+                                <img cAlass="card-img-top" src="https://i.ytimg.com/vi/DDxwWatRqm0/maxresdefault.jpg" alt="..." />
+                                <div class="card-body p-4">
+                                    <div class="badge bg-primary bg-gradient rounded-pill mb-2">Premiere Pro</div>
+                                    <a class="text-decoration-none link-dark stretched-link" href="#tutorials"><h5 class="card-title mb-3">Effects</h5></a>
+                                    <p class="card-text mb-0">How to add adjustment layers, aswell as how to use adjustment layers to add VFX</p>
+                                </div>
+                                <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
+                                    <div class="d-flex align-items-end justify-content-between">
+                                        <div class="d-flex align-items-center">
+                                            <img class="rounded-circle me-3" src="https://dummyimage.com/40x40/ced4da/6c757d" alt="..." />
+                                            <div class="small">
+                                                <div class="fw-bold">Euriel Beltran</div>
+                                                <div class="text-muted">March 23, 2023 &middot; 4 min read</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 mb-5">
+                            <div class="card h-100 shadow border-0">
+                                <img class="card-img-top" src="https://images.squarespace-cdn.com/content/v1/56091db4e4b02efb26807ec0/1487167476029-ASXUB8K4BKMNR57GPVS0/markers-premiere-pro.jpg?format=1000w" alt="..." />
+                                <div class="card-body p-4">
+                                    <div class="badge bg-primary bg-gradient rounded-pill mb-2">Premiere Pro</div>
+                                    <a class="text-decoration-none link-dark stretched-link" href="#tutorials"><h5 class="card-title mb-3">Marking</h5></a>
+                                    <p class="card-text mb-0">Learn how to mark out music beats in order to create suspense to highlight important parts of the video</p>
+                                </div>
+                                <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
+                                    <div class="d-flex align-items-end justify-content-between">
+                                        <div class="d-flex align-items-center">
+                                            <img class="rounded-circle me-3" src="https://dummyimage.com/40x40/ced4da/6c757d" alt="..." />
+                                            <div class="small">
+                                                <div class="fw-bold">Euriel Beltran</div>
+                                                <div class="text-muted">April 2, 2023 &middot; 10 min read</div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 mb-5">
-                        <div class="card h-100 shadow border-0">
-                            <img cAlass="card-img-top" src="https://i.ytimg.com/vi/DDxwWatRqm0/maxresdefault.jpg" alt="..." />
-                            <div class="card-body p-4">
-                                <div class="badge bg-primary bg-gradient rounded-pill mb-2">Premiere Pro</div>
-                                <a class="text-decoration-none link-dark stretched-link" href="#tutorials"><h5 class="card-title mb-3">Effects</h5></a>
-                                <p class="card-text mb-0">How to add adjustment layers, aswell as how to use adjustment layers to add VFX</p>
-                            </div>
-                            <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
-                                <div class="d-flex align-items-end justify-content-between">
-                                    <div class="d-flex align-items-center">
-                                        <img class="rounded-circle me-3" src="https://dummyimage.com/40x40/ced4da/6c757d" alt="..." />
-                                        <div class="small">
-                                            <div class="fw-bold">Euriel Beltran</div>
-                                            <div class="text-muted">March 23, 2023 &middot; 4 min read</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 mb-5">
-                        <div class="card h-100 shadow border-0">
-                            <img class="card-img-top" src="https://images.squarespace-cdn.com/content/v1/56091db4e4b02efb26807ec0/1487167476029-ASXUB8K4BKMNR57GPVS0/markers-premiere-pro.jpg?format=1000w" alt="..." />
-                            <div class="card-body p-4">
-                                <div class="badge bg-primary bg-gradient rounded-pill mb-2">Premiere Pro</div>
-                                <a class="text-decoration-none link-dark stretched-link" href="#tutorials"><h5 class="card-title mb-3">Marking</h5></a>
-                                <p class="card-text mb-0">Learn how to mark out music beats in order to create suspense to highlight important parts of the video</p>
-                            </div>
-                            <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
-                                <div class="d-flex align-items-end justify-content-between">
-                                    <div class="d-flex align-items-center">
-                                        <img class="rounded-circle me-3" src="https://dummyimage.com/40x40/ced4da/6c757d" alt="..." />
-                                        <div class="small">
-                                            <div class="fw-bold">Euriel Beltran</div>
-                                            <div class="text-muted">April 2, 2023 &middot; 10 min read</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+            </div>
+                    </aside>
+                </div>
+            </section>
+        </main>
+        <!-- Footer-->
+        <footer class="footer-custom py-4 mt-auto">
+            <div class="container px-5">
+                <div class="row align-items-center justify-content-between flex-column flex-sm-row">
+                    <div class="col-auto"><div class="small m-0 text-white">Copyright &copy; All About Media 2023</div></div>
+                    <div class="col-auto">
+                        <a class="link-light small" href="/privacy">Privacy</a>
+                        <span class="text-white mx-1">&middot;</span>
+                        <a class="link-light small" href="/terms">Terms</a>
+                        <span class="text-white mx-1">&middot;</span>
+                        <a class="link-light small" href="/contact">Contact</a>
                     </div>
                 </div>
-        
-                </aside>
             </div>
-        </section>
-    </main>
-    <!-- Footer-->
-    <footer class="footer-custom py-4 mt-auto">
-        <div class="container px-5">
-            <div class="row align-items-center justify-content-between flex-column flex-sm-row">
-                <div class="col-auto"><div class="small m-0 text-white">Copyright &copy; All About Media 2023</div></div>
-                <div class="col-auto">
-                    <a class="link-light small" href="/privacy">Privacy</a>
-                    <span class="text-white mx-1">&middot;</span>
-                    <a class="link-light small" href="/terms">Terms</a>
-                    <span class="text-white mx-1">&middot;</span>
-                    <a class="link-light small" href="/contact">Contact</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-</body>
-
-{% endblock%}
+        </footer>
+    </body>
+                                    
+{% endblock %}

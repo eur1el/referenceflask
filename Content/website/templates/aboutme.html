@@ -1,75 +1,84 @@
-<!--Extends code from base.html for a basic page-->
-{% extends "base.html" %} {% block title %}Home{% endblock %}
+<!-- Extends code from base.html for a basic page -->
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
 {% block content %}
-  </body>
-</html>
+
 <style>
- *{
-    margin:0px;
-    padding:0px;
-    box-sizing: border-box;
-    text-align: center;
-    color: black;
-    line-height: 1.5;
-    letter-spacing: 1px;
- }
-.wrapper{
-    min-height: 86vh;
-    width: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-article h1{
-    font-size: 50px;
-    font-weight: 800;
-    text-transform: uppercase;
-}
-article h1:after{
-    content:"";
-    height:5px;
-    width:255px;
-    background-color: #fff;
-    display:block;
-    margin:auto
-}
-blockquote{
-    font-size: 20px;
-    margin-top: 30px;
-}
-</style>
-</head>
-<body>
+    *{
+       margin:0px;
+       padding:0px;
+       box-sizing: border-box;
+       text-align: center;
+       color: black;
+       line-height: 1.5;
+       letter-spacing: 1px;
+    }
+   .wrapper{
+       min-height: 86vh;
+       width: 100%;
+       background-position: center;
+       background-repeat: no-repeat;
+       background-size: cover;
+   }
+   article h1{
+       font-size: 50px;
+       font-weight: 800;
+       text-transform: uppercase;
+   }
+   article h1:after{
+       content:"";
+       height:5px;
+       width:255px;
+       background-color: #fff;
+       display:block;
+       margin:auto
+   }
+   blockquote{
+       font-size: 20px;
+       margin-top: 30px;
+   }
+   </style>
+    <!-- Start of page content -->
     <div class="wrapper">
         <div class="testimonial">
             <article>
+                <!-- Main heading -->
                 <h1>about me</h1>
-               <img src="https://asset-cdn.schoology.com/system/files/imagecache/profile_reg/pictures/picture-d7aecfab4144761dc4e16884610d8423_62266575569d7.jpg?1646683509">
+                
+                <!-- Profile image -->
+                <img src="https://asset-cdn.schoology.com/system/files/imagecache/profile_reg/pictures/picture-d7aecfab4144761dc4e16884610d8423_62266575569d7.jpg?1646683509">
+                
+                <!-- Blockquote with a personal introduction -->
                 <blockquote>
-                    I'm Euriel Beltran, a dedicated Year 13 student at Sancta Maria College. I'm excited to introduce my digital project—a captivating website centered on Adobe Premiere Pro. My passion for content creation and media drives this endeavor, recognizing their essential role in modern communication.As society embraces the digital age, the ability to curate engaging content becomes indispensable. I'm eager to embark on this journey, not only to enhance my skills but also to contribute to the evolving media landscape. Through my website, I aspire to inspire, educate, and unite a community of like-minded enthusiasts poised to excel in this exciting arena.
+                    I'm Euriel Jaiden Beltran, a NewZealand grown fillipino. 
+                    <!-- ... More content ... -->
                 </blockquote>
+                
+                <!-- Author's name and description -->
                 <h5>Euriel Beltran</h5>
                 <p>Current Year 13 student attending Sancta Maria College as of 2023</p>
             </article>
         </div>
     </div>
-  </div>
-</body>
-<!-- Footer-->
-<footer class="footer-custom py-4 mt-auto">
-    <div class="container px-5">
-        <div class="row align-items-center justify-content-between flex-column flex-sm-row">
-            <div class="col-auto"><div class="small m-0 text-white">Copyright &copy; euriels edits 2023</div></div>
-            <div class="col-auto">
-                <a class="link-light small" href="#!">Privacy</a>
-                <span class="text-white mx-1">&middot;</span>
-                <a class="link-light small" href="#!">Terms</a>
-                <span class="text-white mx-1">&middot;</span>
-                <a class="link-light small" href="#!">Contact</a>
+</div>
+    <!-- End of page content -->
+
+       <!-- Footer-->
+       <footer class="footer-custom py-4 mt-auto">
+        <div class="container px-5">
+            <div class="row align-items-center justify-content-between flex-column flex-sm-row">
+                <div class="col-auto"><div class="small m-0 text-white">Copyright &copy; All About Media 2023</div></div>
+                <div class="col-auto">
+                    <a class="link-light small" href="/privacy">Privacy</a>
+                    <span class="text-white mx-1">&middot;</span>
+                    <a class="link-light small" href="/terms">Terms</a>
+                    <span class="text-white mx-1">&middot;</span>
+                    <a class="link-light small" href="/contact">Contact</a>
+                </div>
             </div>
         </div>
-    </div>
-</footer>
+    </footer>
 </body>
 {% endblock %}
-

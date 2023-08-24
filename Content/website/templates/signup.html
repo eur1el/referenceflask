@@ -1,17 +1,27 @@
-<!--Uses base template's code for base html site-->
-<!--Signup page that allows users to sign up their account-->
-{% extends "base.html" %} {% block title %}Sign Up{% endblock %} {% block content %}
+<!-- Uses base template's code for base HTML site -->
+{% extends "base.html" %}
+
+{% block title %}Sign Up{% endblock %}
+
+{% block content %}
 <div class="content-section">
   <form method="POST">
+    <!-- Hidden tag to handle form CSRF protection -->
     {{ form.hidden_tag() }}
+
+    <!-- Line breaks for spacing -->
     <br>
     <br>
+
+    <!-- Form fieldset with legend -->
     <fieldset class="form">
       <legend class="border-bottom mb-4">Join Today!</legend>
+
+      <!-- Username field -->
       <div class="form-group">
         {{ form.username.label(class="form-control-label") }}
 
-        <!--If form is invalid shows error message-->
+        <!-- Check for errors and display input accordingly -->
         {% if form.username.errors %}
           {{ form.username(class="form-control form-control-lg is-invalid") }}
           <div class="invalid-feedback">
@@ -21,13 +31,14 @@
           </div>
         {% else %}
           {{ form.username(class="form-control form-control-lg")}}
-      {% endif %}
+        {% endif %}
       </div>
 
+      <!-- Email field -->
       <div class="form-group">
         {{ form.email.label(class="form-control-label") }}
 
-        <!--If form is invalid shows error message-->
+        <!-- Check for errors and display input accordingly -->
         {% if form.email.errors %}
           {{ form.email(class="form-control form-control-lg is-invalid") }}
           <div class="invalid-feedback">
@@ -37,13 +48,14 @@
           </div>
         {% else %}
           {{ form.email(class="form-control form-control-lg")}}
-      {% endif %}
+        {% endif %}
       </div>
-      
+
+      <!-- Password field -->
       <div class="form-group">
         {{ form.password.label(class="form-control-label") }}
 
-        <!--If form is invalid shows error message-->
+        <!-- Check for errors and display input accordingly -->
         {% if form.password.errors %}
           {{ form.password(class="form-control form-control-lg is-invalid") }}
           <div class="invalid-feedback">
@@ -53,13 +65,14 @@
           </div>
         {% else %}
           {{ form.password(class="form-control form-control-lg")}}
-      {% endif %}
+        {% endif %}
       </div>
 
+      <!-- Confirm password field -->
       <div class="form-group">
         {{ form.confirmpassword.label(class="form-control-label") }}
 
-        <!--If form is invalid shows error message-->
+        <!-- Check for errors and display input accordingly -->
         {% if form.confirmpassword.errors %}
           {{ form.confirmpassword(class="form-control form-control-lg is-invalid") }}
           <div class="invalid-feedback">
@@ -69,18 +82,43 @@
           </div>
         {% else %}
           {{ form.confirmpassword(class="form-control form-control-lg")}}
-      {% endif %}
-      </div>      
-
-    </fieldset> 
+        {% endif %}
+      </div>
+    </fieldset>
+    
+    <!-- Line breaks for spacing -->
     </br>
+
+    <!-- Submit button -->
     <div class="form-group">
-      {{ form.submit(class="btn btn-outline-info")}} 
+      {{ form.submit(class="btn btn-outline-info") }} 
+    </div>
   </form>
 </div>
 
+<!-- Section for users who already have an account -->
 <div class="border-top pt-3">
   <small class="text-muted">
-    Already have an account?<a class="ml-2" href="{{ url_for('auth.login') }}">Sign In</a>
-
+    Already have an account? <a class="ml-2" href="{{ url_for('auth.login') }}">Sign In</a>
+  </small>
+</div>
+</div>
+<br>
+<br>
+<!-- Footer-->
+<footer class="footer-custom py-4 mt-auto">
+  <div class="container px-5">
+      <div class="row align-items-center justify-content-between flex-column flex-sm-row">
+          <div class="col-auto"><div class="small m-0 text-white">Copyright &copy; All About Media 2023</div></div>
+          <div class="col-auto">
+              <a class="link-light small" href="/privacy">Privacy</a>
+              <span class="text-white mx-1">&middot;</span>
+              <a class="link-light small" href="/terms">Terms</a>
+              <span class="text-white mx-1">&middot;</span>
+              <a class="link-light small" href="/contact">Contact</a>
+          </div>
+      </div>
+  </div>
+</footer>
+</body> 
 {% endblock %}

@@ -1,5 +1,5 @@
 #
-
+# Import necessary modules and packages
 #
 import os
 from pathlib import Path
@@ -11,40 +11,49 @@ from .models import Post, User, Comment, Like
 from .forms import UpdateAccountForm, RegistrationForm, PostForm
 from . import db
 
+# Create a Blueprint named 'views'
 views = Blueprint("views", __name__)
 
 #
+# Define routes for different pages
+#
+
+# Home page route
 @views.route("/")
 @views.route("/home")
 def home():
-    page = Post.query.all()
+    page = Post.query.all()  # This seems unnecessary. 'page' variable is defined but not used.
     return render_template("home.html", user=current_user, posts=posts)
 
+# About me page route
 @views.route("/")
 @views.route("/about")
 def aboutme():
-    page = Post.query.all()
+    page = Post.query.all()  # Same as above, 'page' is not used.
     return render_template("aboutme.html", user=current_user, posts=posts)
 
+# Contact page route
 @views.route("/")
 @views.route("/contact")
 def contact():
-    page = Post.query.all()
+    page = Post.query.all()  # Same as above, 'page' is not used.
     return render_template("contact.html", user=current_user, posts=posts)
 
+# Terms page route
 @views.route("/")
 @views.route("/terms")
 def terms():
-    page = Post.query.all()
+    page = Post.query.all()  # Same as above, 'page' is not used.
     return render_template("terms.html", user=current_user, posts=posts)
 
+# Privacy page route
 @views.route("/")
 @views.route("/privacy")
 def privacy():
-    page = Post.query.all()
+    page = Post.query.all()  # Same as above, 'page' is not used.
     return render_template("privacy.html", user=current_user, posts=posts)
 
-
+# Blog page route
 @views.route("/blog")
 @login_required
 def blog():
@@ -52,6 +61,7 @@ def blog():
     posts = Post.query.order_by(Post.date_created.desc()).paginate(page=page, per_page=4)
     return render_template("blog.html", user=current_user, posts=posts)
 
+# Tutorials page route
 @views.route("/tutorials")
 @login_required
 def tutorials():
@@ -59,7 +69,7 @@ def tutorials():
     posts = Post.query.order_by(Post.date_created.desc()).paginate(page=page, per_page=4)
     return render_template("tutorials.html", user=current_user, posts=posts)
 
-
+# Create post route
 @views.route("/create-post", methods=['GET', 'POST'])
 @login_required
 def create_post():
@@ -75,6 +85,7 @@ def create_post():
 
     return render_template('create_post.html', form=form, user=current_user)
 
+# Delete post route
 @views.route("/delete-post/<id>")
 @login_required
 def delete_post(id):
@@ -156,19 +167,21 @@ def like(post_id):
 
     return jsonify({"likes": len(post.likes), "liked": current_user.id in map(lambda x: x.author, post.likes)})
 
+# Save picture function
 def save_picture(form_picture):
     path = Path("website/static/profile_pics")
     random_hex = secrets.token_hex(8)
-    _,f_ext = os.path.splitext(form_picture.filename)
+    _, f_ext = os.path.splitext(form_picture.filename)
     picture_fn = random_hex + f_ext
     picture_path = os.path.join(path, picture_fn)
     output_size = (125, 125)
     i = Image.open(form_picture)
     i.thumbnail(output_size)
     i.save(picture_path)
-    
+
     return picture_fn
-    
+
+# Account page route
 @views.route("/account", methods=['GET', 'POST'])
 @login_required
 def account():

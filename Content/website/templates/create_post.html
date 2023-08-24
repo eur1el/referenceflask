@@ -1,51 +1,68 @@
-<!--Uses base template's code for base html site-->
-{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content%}
+<!-- Uses base template's code for base HTML site -->
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
 
-  
-  <div class="content-section">
-    <form method="POST">
-      {{ form.hidden_tag() }}
-  
-      <fieldset class="form">
-        <legend class="border-bottom mb-4">Create Post</legend>
-        <div class="form-group">
-          {{ form.title.label(class="form-control-label") }}
-  
-          <!--If form is invalid shows error message-->
-          {% if form.title.errors %}
-            {{ form.title(class="form-control form-control-lg is-invalid") }}
-            <div class="invalid-feedback">
-              {% for error in form.title.errors %}
-                <span>{{ error }}</span>
-              {% endfor %}
-            </div>
-          {% else %}
-            {{ form.title(class="form-control form-control-lg")}}
-          {% endif %}
-        </div>
-  
-        <div class="form-group">
-          {{ form.text.label(class="form-control-label") }}
-  
-          <!--If form is invalid shows error message-->
-          {% if form.text.errors %}
-            {{ form.text(class="form-control form-control-lg is-invalid") }}
-            <div class="invalid-feedback">
-              {% for error in form.text.errors %}
-                <span>{{ error }}</span>
-              {% endfor %}
-            </div>
-          {% else %}
-            {{ form.text(class="form-control form-control-lg")}}
-          {% endif %}
-        </div>
-  
-      </fieldset> 
-      </br>
+{% block content %}
+<!-- Content section for creating a new post -->
+<div class="content-section">
+  <!-- Form to create a new post using the provided form object -->
+  <form method="POST">
+    <!-- Hidden input fields for CSRF protection -->
+    {{ form.hidden_tag() }}
+
+    <!-- Fieldset for the form -->
+    <fieldset class="form">
+      <!-- Legend for the fieldset -->
+      <legend class="border-bottom mb-4">Create Post</legend>
+      <!-- Form group for the title input -->
       <div class="form-group">
-        {{ form.submit(class="btn btn-outline-info")}} 
-    </form>
-  </div>
-  
-  {% endblock %}
-  
+        <!-- Label for the title input -->
+        {{ form.title.label(class="form-control-label") }}
+
+        <!-- Checking for title input errors -->
+        {% if form.title.errors %}
+          <!-- Adding error class if there are errors -->
+          {{ form.title(class="form-control form-control-lg is-invalid") }}
+          <!-- Displaying error messages -->
+          <div class="invalid-feedback">
+            {% for error in form.title.errors %}
+              <span>{{ error }}</span>
+            {% endfor %}
+          </div>
+        {% else %}
+          <!-- Rendering the title input normally -->
+          {{ form.title(class="form-control form-control-lg")}}
+        {% endif %}
+      </div>
+
+      <!-- Form group for the text input -->
+      <div class="form-group">
+        <!-- Label for the text input -->
+        {{ form.text.label(class="form-control-label") }}
+
+        <!-- Checking for text input errors -->
+        {% if form.text.errors %}
+          <!-- Adding error class if there are errors -->
+          {{ form.text(class="form-control form-control-lg is-invalid") }}
+          <!-- Displaying error messages -->
+          <div class="invalid-feedback">
+            {% for error in form.text.errors %}
+              <span>{{ error }}</span>
+            {% endfor %}
+          </div>
+        {% else %}
+          <!-- Rendering the text input normally -->
+          {{ form.text(class="form-control form-control-lg")}}
+        {% endif %}
+      </div>
+    </fieldset>
+    <!-- Line break -->
+    </br>
+    <!-- Form group for the submit button -->
+    <div class="form-group">
+      {{ form.submit(class="btn btn-outline-info") }}
+    </div>
+  </form>
+</div>
+
+{% endblock %}
