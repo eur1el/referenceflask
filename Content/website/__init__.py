@@ -16,7 +16,7 @@ def create_app():
     app = Flask(__name__)
 
     # Configure the app's secret key for session security
-    app.config['SECRET_KEY'] = "helloworld"
+    app.config['SECRET_KEY'] = "eurieljaidenbeltransveryveryverysecretkey1234"
     
     # Configure the app's database URI to connect to SQLite database
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
