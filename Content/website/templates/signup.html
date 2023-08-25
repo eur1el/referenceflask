@@ -12,6 +12,7 @@
     <!-- Line breaks for spacing -->
     <br>
     <br>
+    <br>
 
     <!-- Form fieldset with legend -->
     <fieldset class="form">
@@ -23,7 +24,7 @@
 
         <!-- Check for errors and display input accordingly -->
         {% if form.username.errors %}
-          {{ form.username(class="form-control form-control-lg is-invalid") }}
+            {{ form.username(class="form-control form-control-lg is-invalid") }}
           <div class="invalid-feedback">
             {% for error in form.username.errors %}
               <span>{{ error }}</span>
@@ -103,6 +104,9 @@
   </small>
 </div>
 </div>
+<br>
+<br>
+<br>
 <br>
 <br>
 <!-- Footer-->

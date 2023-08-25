@@ -11032,3 +11032,12 @@ article img{
   display: block;
   margin: auto;
 }
+.navbar-custom {
+	background-color: #250031;
+}
+.footer-custom {
+	background-color: #250031;
+}
+.bg-custom{
+  background-color: #250031;
+}

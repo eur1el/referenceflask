@@ -1,17 +1,19 @@
 
-# STILL NEED TO VALIDATE
-
-
 """Import necessary modules and packages."""
+import re
 import os
 from pathlib import Path
 from PIL import Image
 import secrets
-from flask import Blueprint, render_template, request, flash, redirect, url_for, jsonify
+from flask import Blueprint, render_template, request, flash, redirect, url_for, jsonify, abort
 from flask_login import login_required, current_user
 from .models import Post, User, Comment, Like
 from .forms import UpdateAccountForm, RegistrationForm, PostForm
 from . import db
+
+#profane words
+profane_words = ["shit", "fuck", "cunt",]
+
 
 # Create a Blueprint named 'views'
 views = Blueprint("views", __name__)
@@ -120,13 +122,14 @@ def delete_post(id):
 @views.route("/posts/<username>")
 @login_required
 def posts(username):
+    page = request.args.get('page', 1, type=int)
     user = User.query.filter_by(username=username).first()
 
     if not user:
         flash('No user with that username exists.', category='error')
         return redirect(url_for('views.blog'))
 
-    posts = user.posts
+    posts = Post.query.filter_by(user=user).order_by(Post.date_created.desc()).paginate(page=page, per_page=5)
     return render_template("posts.html", user=current_user, posts=posts, username=username)
 
 @views.route("/create-comment/<post_id>", methods=['POST'])
@@ -137,6 +140,11 @@ def create_comment(post_id):
     if not text:
         flash('Comment cannot be empty.', category='error')
     else:
+         # Profanity filter
+        for word in profane_words:
+            if re.search(rf'\b{re.escape(word)}\b', text, re.I):
+                flash('Your comment contains inappropriate language.', category='error')
+                return redirect(url_for('views.blog'))
         post = Post.query.filter_by(id=post_id)
         if post:
             comment = Comment(
@@ -215,3 +223,30 @@ def account():
         form.email.data = current_user.email
     image_file = url_for('static', filename='profile_pics/' + current_user.image_file)
     return render_template('account.html', user=current_user, image_file=image_file, form=form)
+
+
+
+# Create update post route
+@views.route("/update-post/<id>", methods=['GET', 'POST'])
+@login_required
+def update_post(id):
+    post = Post.query.filter_by(id=id).first()
+    if post.author != current_user.id:
+        abort(403)
+    form = PostForm()
+    if form.validate_on_submit():
+        post.title = form.title.data
+        post.text = form.text.data
+        db.session.commit()
+        flash('Your post has been updated!', category='success')
+        page = request.args.get('page', 1, type=int)
+        posts = Post.query.order_by(Post.date_created.desc()).paginate(page=page, per_page=4)
+        return render_template("blog.html", user=current_user, posts=posts)
+    
+    elif request.method == 'GET':
+            form.title.data = post.title
+            form.text.data = post.text
+            image_file = url_for('static', filename='profile_pics/' + current_user.image_file)
+
+
+    return render_template('update_post.html', form=form, user=current_user,post=post, image_file=image_file)

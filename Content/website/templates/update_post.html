@@ -1,19 +1,19 @@
 <!-- Uses base template's code for base HTML site -->
-{% extends "base.html" %}
+{% extends "base.html" %}Update Post
 {% block title %}Home{% endblock %}
 
 {% block content %}
 <!-- Content section for creating a new post -->
 <div class="content-section">
   <!-- Form to create a new post using the provided form object -->
-  <form method="POST"z>
+  <form method="POST">
     <!-- Hidden input fields for CSRF protection -->
     {{ form.hidden_tag() }}
 
     <!-- Fieldset for the form -->
     <fieldset class="form">
       <!-- Legend for the fieldset -->
-      <legend class="border-bottom mb-4">Create Post</legend>
+      <legend class="border-bottom mb-4">Update Post</legend>
       <!-- Form group for the title input -->
       <div class="form-group">
         <!-- Label for the title input -->
