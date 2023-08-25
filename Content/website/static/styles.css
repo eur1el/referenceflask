@@ -10931,14 +10931,17 @@ background-color:black;
 	font-family: "Piazzolla", serif;
 	font-weight: bold;
 	font-size: 41px;
-	text-align: center;
+	text-align: justify;
+  text-align-last: center; /* For modern browsers */
 }
 .center {
-	text-align: center;
+	text-align: justify;
+  text-align-last: center; /* For modern browsers */
 }
 
 .text-footer {
-	text-align: center;
+	text-align: justify;
+  text-align-last: center; /* For modern browsers */
 	padding: 30px 0;
 	font-family: "Ubuntu", sans-serif;
 	display: flex;
@@ -10953,9 +10956,6 @@ background-color:black;
 .nav-list li a:hover {
 	color: #555;
 }
-
-
-
 
 #service {
 	display: flex;
@@ -11023,4 +11023,12 @@ article img{
   height: 65px;
   width: 65px;
   margin: 16px;
+}
+.center-justified-text {
+  text-align: justify;
+  text-align-last: center; /* For modern browsers */
+}
+.center-image {
+  display: block;
+  margin: auto;
 }

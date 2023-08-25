@@ -1,6 +1,8 @@
-#
-# Import necessary modules and packages
-#
+
+# STILL NEED TO VALIDATE
+
+
+"""Import necessary modules and packages."""
 import os
 from pathlib import Path
 from PIL import Image
@@ -16,28 +18,35 @@ views = Blueprint("views", __name__)
 
 #
 # Define routes for different pages
-#
 
-# Home page route
+
+
+"""home page route"""
 @views.route("/")
 @views.route("/home")
 def home():
+    """home page route"""
     page = Post.query.all()  # This seems unnecessary. 'page' variable is defined but not used.
     return render_template("home.html", user=current_user, posts=posts)
 
-# About me page route
+
+"""home page route"""
 @views.route("/")
 @views.route("/about")
 def aboutme():
+    """home page route"""
     page = Post.query.all()  # Same as above, 'page' is not used.
     return render_template("aboutme.html", user=current_user, posts=posts)
+
 
 # Contact page route
 @views.route("/")
 @views.route("/contact")
 def contact():
+    """home page route"""
     page = Post.query.all()  # Same as above, 'page' is not used.
     return render_template("contact.html", user=current_user, posts=posts)
+
 
 # Terms page route
 @views.route("/")
@@ -46,12 +55,14 @@ def terms():
     page = Post.query.all()  # Same as above, 'page' is not used.
     return render_template("terms.html", user=current_user, posts=posts)
 
+
 # Privacy page route
 @views.route("/")
 @views.route("/privacy")
 def privacy():
     page = Post.query.all()  # Same as above, 'page' is not used.
     return render_template("privacy.html", user=current_user, posts=posts)
+
 
 # Blog page route
 @views.route("/blog")
@@ -61,6 +72,7 @@ def blog():
     posts = Post.query.order_by(Post.date_created.desc()).paginate(page=page, per_page=4)
     return render_template("blog.html", user=current_user, posts=posts)
 
+
 # Tutorials page route
 @views.route("/tutorials")
 @login_required
@@ -68,6 +80,7 @@ def tutorials():
     page = request.args.get('page', 1, type=int)
     posts = Post.query.order_by(Post.date_created.desc()).paginate(page=page, per_page=4)
     return render_template("tutorials.html", user=current_user, posts=posts)
+
 
 # Create post route
 @views.route("/create-post", methods=['GET', 'POST'])
@@ -83,7 +96,9 @@ def create_post():
         flash('Post created!', category='success')
         return redirect(url_for('views.blog'))
 
+
     return render_template('create_post.html', form=form, user=current_user)
+
 
 # Delete post route
 @views.route("/delete-post/<id>")
@@ -93,7 +108,7 @@ def delete_post(id):
 
     if not post:
         flash("Post does not exist.", category='error')
-    elif current_user.id != post.id:
+    elif post.author!= current_user.id:
         flash('You do not have permission to delete this post.', category='error')
     else:
         db.session.delete(post)

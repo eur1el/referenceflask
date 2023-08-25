@@ -1,11 +1,12 @@
+"""import necessary modules, packages and programs."""
 from . import db
 from flask_login import UserMixin
 from sqlalchemy.sql import func
 
-#
 
-#
 class User(db.Model, UserMixin):
+    """Create class called user using db.model and usermixin."""
+
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(150), unique=True)
     username = db.Column(db.String(150), unique=True)
@@ -16,8 +17,10 @@ class User(db.Model, UserMixin):
     comments = db.relationship('Comment', backref='user', passive_deletes=True)
     likes = db.relationship('Like', backref='user', passive_deletes=True)
 
-#
+
 class Post(db.Model):
+    """docstring."""
+
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), nullable=False)
     text = db.Column(db.Text, nullable=False)
@@ -27,8 +30,10 @@ class Post(db.Model):
     comments = db.relationship('Comment', backref='post', passive_deletes=True)
     likes = db.relationship('Like', backref='post', passive_deletes=True)
 
-#
+
 class Comment(db.Model):
+    """docstring."""
+
     id = db.Column(db.Integer, primary_key=True)
     text = db.Column(db.String(200), nullable=False)
     date_created = db.Column(db.DateTime(timezone=True), default=func.now())
@@ -37,8 +42,10 @@ class Comment(db.Model):
     post_id = db.Column(db.Integer, db.ForeignKey(
         'post.id', ondelete="CASCADE"), nullable=False)
 
-#
+
 class Like(db.Model):
+    """docstring."""
+
     id = db.Column(db.Integer, primary_key=True)
     date_created = db.Column(db.DateTime(timezone=True), default=func.now())
     author = db.Column(db.Integer, db.ForeignKey(
