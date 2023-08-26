@@ -10896,10 +10896,7 @@ h2{
 	color: grey;
 }
 
-.rightNav {
-	width: 50;
-	text-align: right;
-}
+
 
 #search {
 	padding: 5px;
@@ -11040,4 +11037,7 @@ article img{
 }
 .bg-custom{
   background-color: #250031;
+}
+.bg-blog{
+  background-color: #ea77ff;
 }

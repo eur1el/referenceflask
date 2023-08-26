@@ -11,15 +11,14 @@ from .models import Post, User, Comment, Like
 from .forms import UpdateAccountForm, RegistrationForm, PostForm
 from . import db
 
-#profane words
+"""profane words"""
 profane_words = ["shit", "fuck", "cunt",]
 
 
-# Create a Blueprint named 'views'
+"""Create a Blueprint named 'views'"""
 views = Blueprint("views", __name__)
 
-#
-# Define routes for different pages
+
 
 
 
@@ -190,7 +189,7 @@ def like(post_id):
 
     return jsonify({"likes": len(post.likes), "liked": current_user.id in map(lambda x: x.author, post.likes)})
 
-# Save picture function
+"""Save picture function"""
 def save_picture(form_picture):
     path = Path("website/static/profile_pics")
     random_hex = secrets.token_hex(8)
@@ -204,7 +203,7 @@ def save_picture(form_picture):
 
     return picture_fn
 
-# Account page route
+#view/route for account updates, updates user profile picture
 @views.route("/account", methods=['GET', 'POST'])
 @login_required
 def account():
@@ -226,7 +225,8 @@ def account():
 
 
 
-# Create update post route
+
+"""Create update post route"""
 @views.route("/update-post/<id>", methods=['GET', 'POST'])
 @login_required
 def update_post(id):

@@ -20,44 +20,55 @@ def login():
         email = request.form.get("email")
         password = request.form.get("password")
 
-        # Query the User model to find a user with the provided email
+        """Query the User model to find a user with the provided email"""
         user = User.query.filter_by(email=email).first()
         if user:
             if check_password_hash(user.password, password):
                 flash("Logged in!", category='success')
-                # Log in the user
+                """Log in the user"""
                 login_user(user, remember=True)
-                # Redirect to the home page
+                """Redirect to the home page"""
                 return redirect(url_for('views.home'))
             else:
                 flash('Password is incorrect.', category='error')
         else:
             flash('Email does not exist.', category='error')
-    # Render the login template
+    """Render the login template"""
     return render_template("login.html", user=current_user)
 
 
 """Route for user sign-up"""
 @auth.route("/sign-up", methods=['GET', 'POST'])
 def sign_up():
-    # Check if the user is already authenticated
+    """Check if the user is already authenticated"""
     if current_user.is_authenticated:
-        return redirect(url_for('home'))  # Redirect to home if authenticated
-
-    form = RegistrationForm()  # Instantiate the RegistrationForm
+        return redirect(url_for('home'))
+    """Redirect to home if authenticated"""
+  
+    form = RegistrationForm()  
 
     if form.validate_on_submit():
-        # Hash the password using SHA-256
+        """Hash the password using SHA-256"""
+
         hashed_password = generate_password_hash(form.password.data, method='sha256')
-        # Create a new user instance with the provided form data
+        """Create a new user instance with the provided form data"""
+
         user = User(username=form.username.data, email=form.email.data, password=hashed_password)
-        db.session.add(user)  # Add the user to the session
-        db.session.commit()  # Commit the changes to the database
-        # Flash a success message
+        db.session.add(user)
+        """Add the user to the session"""  
+
+        db.session.commit()  
+        """Commit the changes to the database"""
+
         flash('Your account has been created!', 'success')
-        return redirect(url_for('auth.login'))  # Redirect to the login page
-    # Render the signup template
+        """Flash a success message"""
+
+        return redirect(url_for('auth.login'))
+    """ Redirect to the login page"""
+    
+    """Render the signup template"""
     return render_template('signup.html', form=form, user=current_user)
+    
 
 
 # Route for user logout
