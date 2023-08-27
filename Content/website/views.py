@@ -1,15 +1,18 @@
 
-"""Import necessary modules and packages."""
-import re
+
 import os
 from pathlib import Path
-from PIL import Image
-import secrets
+from PIL import Image 
+import secrets 
 from flask import Blueprint, render_template, request, flash, redirect, url_for, jsonify, abort
 from flask_login import login_required, current_user
 from .models import Post, User, Comment, Like
-from .forms import UpdateAccountForm, RegistrationForm, PostForm
+from .forms import RegistrationForm, UpdateAccountForm, PostForm
 from . import db
+from website import create_app
+from PIL import Image
+from flask import current_app
+from secrets import token_hex
 
 """profane words"""
 profane_words = ["shit", "fuck", "cunt",]
@@ -170,6 +173,7 @@ def delete_comment(comment_id):
 
     return redirect(url_for('views.blog'))
 
+#view/route for likes on posts
 @views.route("/like-post/<post_id>", methods=['POST'])
 @login_required
 def like(post_id):
@@ -189,20 +193,30 @@ def like(post_id):
 
     return jsonify({"likes": len(post.likes), "liked": current_user.id in map(lambda x: x.author, post.likes)})
 
-"""Save picture function"""
+#allows for saving pictures for account profile pictures
 def save_picture(form_picture):
-    path = Path("website/static/profile_pics")
-    random_hex = secrets.token_hex(8)
-    _, f_ext = os.path.splitext(form_picture.filename)
+    # Get the path to the profile pictures directory
+    path = Path(current_app.root_path) / 'static' / 'profile_pics'
+
+    # Generate a random filename using tokens
+    random_hex = token_hex(8)
+    _,f_ext = os.path.splitext(form_picture.filename)
     picture_fn = random_hex + f_ext
-    picture_path = os.path.join(path, picture_fn)
+
+    # Set the full path for saving the image
+    picture_path = path / picture_fn
+
+    # Resize the image to a desired output size
     output_size = (125, 125)
     i = Image.open(form_picture)
     i.thumbnail(output_size)
+
+    # Save the resized image to the specified path
     i.save(picture_path)
 
+    # Return the filename for the saved image
     return picture_fn
-
+    
 #view/route for account updates, updates user profile picture
 @views.route("/account", methods=['GET', 'POST'])
 @login_required
@@ -238,15 +252,14 @@ def update_post(id):
         post.title = form.title.data
         post.text = form.text.data
         db.session.commit()
-        flash('Your post has been updated!', category='success')
+        flash('Your Post has been Updated!', category='success')
         page = request.args.get('page', 1, type=int)
         posts = Post.query.order_by(Post.date_created.desc()).paginate(page=page, per_page=4)
         return render_template("blog.html", user=current_user, posts=posts)
     
     elif request.method == 'GET':
-            form.title.data = post.title
-            form.text.data = post.text
-            image_file = url_for('static', filename='profile_pics/' + current_user.image_file)
+        form.title.data = post.title
+        form.text.data = post.text
+        image_file = url_for('static', filename='profile_pics/' + current_user.image_file)
 
-
-    return render_template('update_post.html', form=form, user=current_user,post=post, image_file=image_file)
+    return render_template('update_post.html', form=form, user=current_user, post=post, image_file=image_file)
