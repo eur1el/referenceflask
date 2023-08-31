@@ -24,7 +24,6 @@ views = Blueprint("views", __name__)
 
 
 
-
 """home page route"""
 @views.route("/")
 @views.route("/home")
