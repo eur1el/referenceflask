@@ -217,25 +217,46 @@ def save_picture(form_picture):
     return picture_fn
     
 #view/route for account updates, updates user profile picture
+# Import necessary modules and functions
+from flask import render_template, flash, redirect, url_for, request
+from flask_login import login_required, current_user
+from . import views  # Import the 'views' blueprint
+from .forms import UpdateAccountForm  # Import the form for updating the account
+from .models import db  # Import the database instance
+from .utils import save_picture  # Import the function for saving profile pictures
+
+# Define the route for the account page, accessible through both GET and POST methods
 @views.route("/account", methods=['GET', 'POST'])
-@login_required
+@login_required  # Require the user to be logged in to access this view
 def account():
+    # Create an instance of the UpdateAccountForm form
     form = UpdateAccountForm()
+
+    # Check if the form has been submitted and its data is valid
     if form.validate_on_submit():
+        # If a new picture is uploaded, save it and update the user's image_file field
         if form.picture.data:
             picture_file = save_picture(form.picture.data)
             current_user.image_file = picture_file
+        # Update the user's username and email fields with the form data
         current_user.username = form.username.data
         current_user.email = form.email.data
+        # Commit the changes to the database
         db.session.commit()
+        # Display a flash message to indicate successful account update
         flash('Account has been updated!')
+        # Redirect the user back to the account page
         return redirect(url_for('views.account'))
+    # If the request method is GET (initial page load)
     elif request.method == 'GET':
+        # Pre-populate the form fields with the user's current username and email
         form.username.data = current_user.username
         form.email.data = current_user.email
+    # Generate the URL for the user's profile picture
     image_file = url_for('static', filename='profile_pics/' + current_user.image_file)
+    
+    # Render the 'account.html' template with relevant data
     return render_template('account.html', user=current_user, image_file=image_file, form=form)
-
 
 
 
